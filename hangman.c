@@ -4,8 +4,10 @@
 
 int main() {
 
+    // seed for randomization
     srand(time(NULL));
 
+    // words for player to guess
     char wordList[][20] = {
         "alabaster"
         "apple",
@@ -58,14 +60,19 @@ int main() {
         "zebra"
     };
 
-    int len = sizeof(wordList) / sizeof(wordList[0]);
+    // length of word list
+    int listLength = sizeof(wordList) / sizeof(wordList[0]);
 
+    int randomIndex = rand() % listLength;
     
+    printf("%s", wordList[randomIndex]);
+    
+    int wordLength = strlen(wordList[randomIndex]);
 
-    for (int i = 0; i < 20; i++) {
-        int randomIndex = rand() % len;
-        printf("%s\n", wordList[randomIndex]);
-    }
+    printf("\n%d", wordLength);
+
+    int numLives = 5;
+    int numCorrect = 0;
 
     return 0;
 }
