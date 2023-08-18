@@ -4,6 +4,8 @@
 
 int main() {
 
+    srand(time(NULL));
+
     char wordList[][20] = {
         "alabaster"
         "apple",
@@ -61,7 +63,7 @@ int main() {
     
 
     for (int i = 0; i < 20; i++) {
-        int randomIndex = rand() % (len + 1);
+        int randomIndex = rand() % len;
         printf("%s\n", wordList[randomIndex]);
     }
 
