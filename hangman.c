@@ -56,7 +56,14 @@ int main() {
         "zebra"
     };
 
+    int len = sizeof(wordList) / sizeof(wordList[0]);
+
     
+
+    for (int i = 0; i < 20; i++) {
+        int randomIndex = rand() % (len + 1);
+        printf("%s\n", wordList[randomIndex]);
+    }
 
     return 0;
 }
