@@ -3,15 +3,21 @@
 #include <stdlib.h> 
 #include <time.h>
 
-void displayWord(int wordLength, char word[], char guessed[]) {
+int displayWord(int wordLength, char word[], char guessed[]) {
+    int count = 0;
         for (int i = 0; i < wordLength; i++) {
             if (strchr(guessed, word[i]) != NULL) {
                 printf("%c", word[i]);
+                count++;
+                if (count == wordLength) {
+                    return 1;
+                }
             } 
             else {
                 printf("_");
             }
         }
+        return 0;
     }
 
 
@@ -93,8 +99,10 @@ int main() {
     int numCorrect = 0;
 
 
-    char g[] = {"abcd"};
-    displayWord(wordLength, word, g);
+    char g[] = {"abcdefghijklmnopqrstuvwxyz"};
+    if (displayWord(wordLength, word, g) == 1) {
+        printf("\nYOU WIN!!\n");
+    }
     
 
 
