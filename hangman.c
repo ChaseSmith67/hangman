@@ -9,7 +9,7 @@ int main() {
 
     // words for player to guess
     char wordList[][20] = {
-        "alabaster"
+        "alabaster",
         "apple",
         "ballerina",
         "basketball",
@@ -65,14 +65,43 @@ int main() {
 
     int randomIndex = rand() % listLength;
     
-    printf("%s", wordList[randomIndex]);
     
+    // choose random word
     int wordLength = strlen(wordList[randomIndex]);
+    char word[wordLength - 1];
 
-    printf("\n%d", wordLength);
+    for (int i = 0; i <= wordLength; i++) {
+        word[i] = wordList[randomIndex][i];
+    }
+    printf("%s\n", word);
+
 
     int numLives = 5;
     int numCorrect = 0;
+
+    char wordDisplay[wordLength - 1];
+    int revealedLetters[wordLength - 1];
+
+    for (int i = 0; i < wordLength; i++) {
+        if (i % 3 == 0) {
+            revealedLetters[i] = 0;
+        }
+        else {
+            revealedLetters[i] = 1;
+        }
+    }
+    void displayWord() {
+        for (int i = 0; i < wordLength; i++) {
+            // printf("%d", revealedLetters[i]);
+            if (revealedLetters[i] == 1) {
+                printf("%c", word[i]);
+            } 
+            else {
+                printf("_");
+            }
+        }
+    }
+
 
     return 0;
 }
