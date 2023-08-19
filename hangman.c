@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
+#include <time.h>
+
+void displayWord(int wordLength, char word[], char guessed[]) {
+        for (int i = 0; i < wordLength; i++) {
+            if (strchr(guessed, word[i]) != NULL) {
+                printf("%c", word[i]);
+            } 
+            else {
+                printf("_");
+            }
+        }
+    }
+
 
 int main() {
 
@@ -79,28 +92,10 @@ int main() {
     int numLives = 5;
     int numCorrect = 0;
 
-    char wordDisplay[wordLength - 1];
-    int revealedLetters[wordLength - 1];
 
-    for (int i = 0; i < wordLength; i++) {
-        if (i % 3 == 0) {
-            revealedLetters[i] = 0;
-        }
-        else {
-            revealedLetters[i] = 1;
-        }
-    }
-    void displayWord() {
-        for (int i = 0; i < wordLength; i++) {
-            // printf("%d", revealedLetters[i]);
-            if (revealedLetters[i] == 1) {
-                printf("%c", word[i]);
-            } 
-            else {
-                printf("_");
-            }
-        }
-    }
+    char g[] = {"abcd"};
+    displayWord(wordLength, word, g);
+    
 
 
     return 0;
