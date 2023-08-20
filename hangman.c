@@ -20,6 +20,22 @@ int displayWord(int wordLength, char word[], char guessed[]) {
         return 0;
     }
 
+int guessLetter(char guessed[]) {
+    char guess;
+    printf("\nEnter a letter:" );
+    scanf("%c", &guess);
+    printf("\n");
+
+    if (strchr(guessed, guess) == NULL) {
+        for (int i = 0; i < 26; i++) {
+            if (guessed[i] == 0) {
+                guessed[i] = guess;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
 int main() {
 
@@ -99,12 +115,17 @@ int main() {
     int numCorrect = 0;
 
 
-    char g[] = {"abcdefghijklmnopqrstuvwxyz"};
-    if (displayWord(wordLength, word, g) == 1) {
-        printf("\nYOU WIN!!\n");
+    char g[26]; 
+    for (int i = 0; i < 26; i++) {
+        g[i] = 0;
     }
-    
 
+    while (guessLetter(g) == 1) { 
+
+        if (displayWord(wordLength, word, g) == 1) {
+            printf("\nYOU WIN!!\n");
+        }
+    }
 
     return 0;
 }
